@@ -63,6 +63,7 @@ public class RabbitAI : MonoBehaviour
 
     private void UpdateIdle()
     {}
+        animator.SetInteger("anim", 0);
         if (enemyDistance > maxEnemyDistance)
         {
             _currentState = RabbitState.RunToward;
@@ -74,6 +75,7 @@ public class RabbitAI : MonoBehaviour
 
     private void UpdateRunToward()
     {
+        animator.SetInteger("anim", 1);
         // In the RunToward-State the Rabbit should move toward the player
         // Note: You can use the Method SetVelocityX(…) and the variable runningSpeed to set the 
         // movement-Speed of the Rabbit.
@@ -88,6 +90,7 @@ public class RabbitAI : MonoBehaviour
 
     private void UpdateRunAway()
     {
+        animator.SetInteger("anim", 2);
         // in the RunAway-State it should move away from the player
         // Note: You can use the Method SetVelocityX(…) and the variable runningSpeed to set the 
         // movement-Speed of the Rabbit.
