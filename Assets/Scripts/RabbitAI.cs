@@ -45,4 +45,15 @@ public class RabbitAI : MonoBehaviour
 
         //TODO: Implement Movement via SetVelocityX
 	}
+
+    private void UpdateIdle()
+    {}
+
+    private void UpdateRunToward()
+    {}
+
+    private void UpdateRunAway()
+    {}
+
+
 }
