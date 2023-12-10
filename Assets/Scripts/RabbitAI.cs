@@ -72,7 +72,14 @@ public class RabbitAI : MonoBehaviour
     }
 
     private void UpdateRunAway()
-    {}
+    {
+        // in the RunAway-State it should move away from the player
+        // Note: You can use the Method SetVelocityX(…) and the variable runningSpeed to set the 
+        // movement-Speed of the Rabbit.
+
+        // I guess that instruction means to do this? 
+        SetVelocityX(runningSpeed);
+    }
 
 
 }
