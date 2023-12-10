@@ -10,8 +10,8 @@ public class RabbitAI : MonoBehaviour
     Vector2 toEnemy;
     float enemyDistance;
 
-    float maxEnemyDistance = 5;
-    float minEnemyDistance = 2;
+    float maxEnemyDistance = 8;
+    float minEnemyDistance = 3;
 
     public float runningSpeed = 2.0f;
 
@@ -31,10 +31,8 @@ public class RabbitAI : MonoBehaviour
         animator = GetComponent<Animator>();
         ninja = FindObjectOfType<NinjaController>();
     }
-    
-    void Start ()
-    {
-	}
+
+    void Start() { }
 
     void SetVelocityX(float x)
     {
@@ -43,7 +41,7 @@ public class RabbitAI : MonoBehaviour
         rigidBody.velocity = velocity;
     }
 
-	void Update ()
+    void Update()
     {
         toEnemy = ninja.transform.position - transform.position;
         enemyDistance = Mathf.Abs(toEnemy.x);
@@ -57,14 +55,14 @@ public class RabbitAI : MonoBehaviour
             UpdateRunToward();
         else if (_currentState == RabbitState.RunAway)
             UpdateRunAway();
-
-
-	}
+    }
 
     private void UpdateIdle()
-    {}
+    {
         SetVelocityX(0);
+
         animator.SetInteger("anim", 0);
+
         if (enemyDistance > maxEnemyDistance)
         {
             _currentState = RabbitState.RunToward;
@@ -73,17 +71,14 @@ public class RabbitAI : MonoBehaviour
         {
             _currentState = RabbitState.RunAway;
         }
+    }
 
     private void UpdateRunToward()
     {
         SetVelocityX(runningSpeed * -1);
-        animator.SetInteger("anim", 1);
-        // In the RunToward-State the Rabbit should move toward the player
-        // Note: You can use the Method SetVelocityX(…) and the variable runningSpeed to set the 
-        // movement-Speed of the Rabbit.
 
-        // I guess that instruction means to do this? 
-        SetVelocityX(runningSpeed);
+        animator.SetInteger("anim", 1);
+
         if (enemyDistance < maxEnemyDistance)
         {
             _currentState = RabbitState.Idle;
@@ -92,18 +87,13 @@ public class RabbitAI : MonoBehaviour
 
     private void UpdateRunAway()
     {
-        animator.SetInteger("anim", 2);
-        // in the RunAway-State it should move away from the player
-        // Note: You can use the Method SetVelocityX(…) and the variable runningSpeed to set the 
-        // movement-Speed of the Rabbit.
-
-        // I guess that instruction means to do this? 
         SetVelocityX(runningSpeed);
-    }
 
+        animator.SetInteger("anim", 2);
 
         if (enemyDistance > minEnemyDistance)
         {
             _currentState = RabbitState.Idle;
         }
+    }
 }
