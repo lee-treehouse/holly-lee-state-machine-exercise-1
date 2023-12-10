@@ -9,7 +9,10 @@ public class RabbitAI : MonoBehaviour
     NinjaController ninja; // this is my enemy
     Vector2 toEnemy;
     float enemyDistance;
-    
+
+    float maxEnemyDistance = 5;
+    float minEnemyDistance = 2;
+
     public float runningSpeed = 2.0f;
 
     [SerializeField]
@@ -60,6 +63,14 @@ public class RabbitAI : MonoBehaviour
 
     private void UpdateIdle()
     {}
+        if (enemyDistance > maxEnemyDistance)
+        {
+            _currentState = RabbitState.RunToward;
+        }
+        else if (enemyDistance < minEnemyDistance)
+        {
+            _currentState = RabbitState.RunAway;
+        }
 
     private void UpdateRunToward()
     {
@@ -69,6 +80,10 @@ public class RabbitAI : MonoBehaviour
 
         // I guess that instruction means to do this? 
         SetVelocityX(runningSpeed);
+        if (enemyDistance < maxEnemyDistance)
+        {
+            _currentState = RabbitState.Idle;
+        }
     }
 
     private void UpdateRunAway()
@@ -82,4 +97,8 @@ public class RabbitAI : MonoBehaviour
     }
 
 
+        if (enemyDistance > minEnemyDistance)
+        {
+            _currentState = RabbitState.Idle;
+        }
 }
