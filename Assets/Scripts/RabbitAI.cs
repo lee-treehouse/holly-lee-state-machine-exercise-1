@@ -12,6 +12,9 @@ public class RabbitAI : MonoBehaviour
     
     public float runningSpeed = 2.0f;
 
+    [SerializeField]
+    private RabbitState _currentState;
+
     private enum RabbitState
     {
         Idle,
