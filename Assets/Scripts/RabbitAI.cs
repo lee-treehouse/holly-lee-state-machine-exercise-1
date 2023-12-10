@@ -12,6 +12,13 @@ public class RabbitAI : MonoBehaviour
     
     public float runningSpeed = 2.0f;
 
+    private enum RabbitState
+    {
+        Idle,
+        RunToward,
+        RunAway
+    }
+
     private void Awake()
     {
         rigidBody = GetComponent<Rigidbody2D>();
