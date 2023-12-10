@@ -47,6 +47,15 @@ public class RabbitAI : MonoBehaviour
         UIManager.Instance.SetDistance(enemyDistance);
 
         //TODO: Implement Movement via SetVelocityX
+
+        if (_currentState == RabbitState.Idle)
+            UpdateIdle();
+        else if (_currentState == RabbitState.RunToward)
+            UpdateRunToward();
+        else if (_currentState == RabbitState.RunAway)
+            UpdateRunAway();
+
+
 	}
 
     private void UpdateIdle()
