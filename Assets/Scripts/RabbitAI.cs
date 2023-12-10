@@ -62,7 +62,14 @@ public class RabbitAI : MonoBehaviour
     {}
 
     private void UpdateRunToward()
-    {}
+    {
+        // In the RunToward-State the Rabbit should move toward the player
+        // Note: You can use the Method SetVelocityX(…) and the variable runningSpeed to set the 
+        // movement-Speed of the Rabbit.
+
+        // I guess that instruction means to do this? 
+        SetVelocityX(runningSpeed);
+    }
 
     private void UpdateRunAway()
     {}
